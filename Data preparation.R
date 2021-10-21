@@ -90,7 +90,7 @@ ST.combined <- RunUMAP(ST.combined, dims = 1:25, min.dist = 0.5)
 ST.combined <- RunTSNE(ST.combined, dims = 1:15, check_duplicates = FALSE)
 
 DimPlot(ST.combined, reduction = "tsne", pt.size = 2, group.by = "stim")
-saveRDS(ST.combined, file = "ST.combined.rds")
+
 
 #######################
 ### find marker genes
@@ -166,12 +166,33 @@ mST.combined <- RunUMAP(mST.combined, dims = 1:25, min.dist = 0.5)
 mST.combined <- RunTSNE(mST.combined, dims = 1:15, check_duplicates = FALSE)
 
 DimPlot(mST.combined, reduction = "tsne", pt.size = 2, group.by = "stim")
-saveRDS(mST.combined, file = "mST.combined.rds")
-
 
 #######################
 ### find marker genes
 mST.com.markers <- FindAllMarkers(mST.combined, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.5, test.use = "wilcox")
 write.table(mST.com.markers, file = "mSTallmarkers.csv", sep = ",")
 
+
+
+
+
+#######################
+## Change the cluster names
+new.cluster.ids <- c("HMGA1-high", "CD44/MYC-high", "Marker-low")
+names(new.cluster.ids) <- levels(ST.combined)
+ST.combined <- RenameIdents(ST.combined, new.cluster.ids)
+
+DimPlot(ST.combined, label = TRUE, pt.size = 2) + NoLegend()
+
+new.cluster.ids <- c("Ttr-high", "Tcell-like", "Inhba-high", "Bcell-like")
+names(new.cluster.ids) <- levels(mST.combined)
+mST.combined <- RenameIdents(mST.combined, new.cluster.ids)
+
+DimPlot(mST.combined, label = TRUE, pt.size = 2) + NoLegend()
+
+
+saveRDS(ST.combined, file = "ST.combined.rds")
+saveRDS(mST.combined, file = "mST.combined.rds")
+
+#######################
 
