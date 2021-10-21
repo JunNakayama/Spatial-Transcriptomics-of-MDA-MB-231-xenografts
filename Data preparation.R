@@ -176,6 +176,7 @@ write.table(mST.com.markers, file = "mSTallmarkers.csv", sep = ",")
 
 
 
+
 #######################
 ## Change the cluster names
 new.cluster.ids <- c("HMGA1-high", "CD44/MYC-high", "Marker-low")
