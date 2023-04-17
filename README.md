@@ -7,6 +7,10 @@ Gene expression analysis at the single-cell scale by next generation sequencing 
 bioRxiv https://doi.org/10.1101/2021.10.21.465257
 
 
+This project has been published in Disease Models & Mechanisms.
+https://pubmed.ncbi.nlm.nih.gov/35611554/
+
+
 Jun Nakayama, Ph.D.
 jnakayama.re@gmail.com
 
